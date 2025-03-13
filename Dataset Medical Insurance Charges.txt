@@ -1,0 +1,80 @@
+Dataset: Medical Insurance Charges
+
+
+1. Dataset Overview
+
+Total Records: 1338
+Features: 7
+Numerical Features: age, bmi, children, charges
+Categorical Features: sex, smoker, region
+
+2. Structure and Summary Statistics
+
+Age: Ranges from 18 to 64 (mean ≈ 39.2).
+BMI (Body Mass Index): Mean ≈ 30.7; presence of high-BMI individuals suggests obesity is prevalent.
+Children: Majority have 0–2 children; max is 5.
+Charges: Highly skewed — ranging from a few thousand to over $63,000. Indicates some patients incur very high costs (possibly due to chronic illness or smoking).
+
+3. Data Cleaning
+
+Missing Values: None (none in this particular dataset but code is there to handle them if present)
+Duplicates: Removed if present
+Outliers: Detected and removed using IQR method in all numerical features (especially visible in charges, bmi)
+Standardization: All categorical values converted to lowercase and stripped of whitespace
+
+4. Distribution Insights
+
+Histograms
+age: Slightly right-skewed; fairly uniform with more entries around 20-60 years.
+bmi: Normal distribution but right tail is slightly heavy.
+charges: Strong positive skew (a small % of people pay very high charges).
+children: Mostly people have children less than equal to two.
+
+Boxplots
+Clear presence of outliers in charges and bmi before cleaning.
+charges vary greatly, especially in smokers.
+
+5. Correlation Analysis
+Variable	Charges Correlation
+age		~0.3 (Moderate)
+bmi		~0.2 (Weak-Moderate)
+children	~0.1 (Low)
+smoker		Very strong impact (seen in pairplot, violin plots)
+Strongest driver of charges is smoking status, visible in the heatmap and pairplots.
+
+6. Scatter Plot Insights
+
+Clear positive linear trend between age and charges for smokers.
+For non-smokers, charges stay relatively moderate regardless of age.
+
+7. Categorical Feature Analysis (Box & Violin Plots)
+
+charges by sex:
+No major difference in cost distribution between male and female.
+
+charges by smoker:
+Smokers incur drastically higher charges — distribution is wider and heavily skewed upward.
+
+charges by region:
+Slight variations; southeast region tends to have higher average charges.
+
+8. Multivariate Analysis
+
+Pairplot by smoker:
+Clusters show how smokers stand out across bmi and charges.
+
+Grouped Bar Plot (sex vs smoker vs charges):
+Male smokers tend to have slightly higher average charges than female smokers.
+Among non-smokers, the cost gap across sexes is minimal.
+
+9. Heatmap of Region vs Sex
+Highest average charges for female smokers in southeast region.
+Charges tend to be higher in southeast across both sexes.
+
+10. More Insights
+
+Smoking is the dominant driver of medical charges.
+Age and BMI have moderate influence on cost, especially for smokers.
+Regional and gender differences exist, but are less significant than smoking.
+Removing outliers makes visual trends more interpretable and reliable.
+Distribution of charges is right-skewed, implying some policyholders are incurring extremely high costs (possible targets for insurance cost analysis or preventive care programs).
